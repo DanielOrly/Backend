@@ -22,11 +22,15 @@ public class Venta {
     private Long id;
     private LocalDate fecha;
     private String estado;
-    private Double total;
+
     //Relacion de muchos a uno ya que una sucursal tiene muchas ventas
     @ManyToOne
     private  Sucursal sucursal;
 
-    @OneToMany(mappedBy = "venta")
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL,
+               orphanRemoval = true, fetch = FetchType.EAGER)
     private List<DetalleVenta> detalle = new ArrayList<>();
+
+    private Double total;
+
 }
