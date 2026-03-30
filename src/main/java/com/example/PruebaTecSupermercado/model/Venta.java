@@ -33,4 +33,8 @@ public class Venta {
 
     private Double total;
 
+
+
+
+
 }

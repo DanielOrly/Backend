@@ -1,10 +1,9 @@
 package com.example.PruebaTecSupermercado.mapper;
 
-import com.example.PruebaTecSupermercado.dto.DetaleVentaDTO;
+import com.example.PruebaTecSupermercado.dto.DetalleVentaDTO;
 import com.example.PruebaTecSupermercado.dto.ProductoDTO;
 import com.example.PruebaTecSupermercado.dto.SucursalDTO;
 import com.example.PruebaTecSupermercado.dto.VentaDTO;
-import com.example.PruebaTecSupermercado.model.DetalleVenta;
 import com.example.PruebaTecSupermercado.model.Producto;
 import com.example.PruebaTecSupermercado.model.Sucursal;
 import com.example.PruebaTecSupermercado.model.Venta;
@@ -24,6 +23,7 @@ public class Mapper {
                 .nombre(p.getNombre())
                 .categoria(p.getCategoria())
                 .precio(p.getPrecio())
+                .cantidad(p.getCantidad())
                 .build();
     }
 
@@ -32,7 +32,7 @@ public class Mapper {
         if (venta == null) return null;
 
         var detalle = venta.getDetalle().stream().map(det ->
-                DetaleVentaDTO.builder()
+                DetalleVentaDTO.builder()
                     .id(det.getProd().getId())
                     .nombreProd(det.getProd().getNombre())
                     .cantProd(det.getCantProd())
@@ -42,7 +42,7 @@ public class Mapper {
                 ).collect(Collectors.toList());
 
         var total = detalle.stream()
-                .map(DetaleVentaDTO::getSubtotal)
+                .map(DetalleVentaDTO::getSubtotal)
                 .reduce(0.0, Double::sum);
 
         return VentaDTO.builder()

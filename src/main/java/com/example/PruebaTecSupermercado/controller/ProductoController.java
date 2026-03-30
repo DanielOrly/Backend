@@ -4,6 +4,7 @@ package com.example.PruebaTecSupermercado.controller;
 import com.example.PruebaTecSupermercado.dto.ProductoDTO;
 import com.example.PruebaTecSupermercado.model.Producto;
 import com.example.PruebaTecSupermercado.service.IProductoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @RequestMapping("/api/productos")
 public class ProductoController {
 
+    @Autowired
     private IProductoService productoService;
 
     @GetMapping
@@ -26,7 +28,7 @@ public class ProductoController {
     public ResponseEntity<ProductoDTO> crearProducto(@RequestBody ProductoDTO dto){
         ProductoDTO creado = productoService.crearProducto(dto);
 
-        return ResponseEntity.created(URI.create("/api/productos" + creado.getId())).body(creado);
+        return ResponseEntity.created(URI.create("/api/productos"+creado.getId())).body(creado);
     }
 
     @PutMapping("/{id}")
