@@ -31,4 +31,6 @@ public class DetalleVenta {
     private Integer cantProd;
     private Double precio;
 
+
+
 }

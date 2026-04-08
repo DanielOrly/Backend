@@ -1,6 +1,6 @@
 package com.example.PruebaTecSupermercado.service;
 
-import com.example.PruebaTecSupermercado.dto.DetaleVentaDTO;
+import com.example.PruebaTecSupermercado.dto.DetalleVentaDTO;
 import com.example.PruebaTecSupermercado.dto.VentaDTO;
 import com.example.PruebaTecSupermercado.exception.NotFoundException;
 import com.example.PruebaTecSupermercado.mapper.Mapper;
@@ -69,7 +69,7 @@ public class VentaService implements IVentaService{
         List<DetalleVenta> detalles = new ArrayList<>();
         Double totalCalculado = 0.0;
 
-        for (DetaleVentaDTO detDTO : ventaDto.getDetalle()) {
+        for (DetalleVentaDTO detDTO : ventaDto.getDetalle()) {
             // Buscar producto por id (tu detDTO usa id como id de producto)
             Producto p = productoRepo.findByNombre(detDTO.getNombreProd()).orElse(null);
             if (p == null)

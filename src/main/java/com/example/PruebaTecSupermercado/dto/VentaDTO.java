@@ -1,6 +1,5 @@
 package com.example.PruebaTecSupermercado.dto;
 
-import com.example.PruebaTecSupermercado.model.DetalleVenta;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -21,7 +20,7 @@ public class VentaDTO {
     //datos de la sucursal
     private Long idSucursal;
     //lista de detalles
-    private List<DetaleVentaDTO> detalle;
+    private List<DetalleVentaDTO> detalle;
 
     //total de la venta
     private Double total;
